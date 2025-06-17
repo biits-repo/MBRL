@@ -1,0 +1,1 @@
+// Centralized definitions for navigation paths and links.
