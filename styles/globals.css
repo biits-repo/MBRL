@@ -1,3 +1,9 @@
 /* Global styles configuration */
 
 @import "tailwindcss";
+
+/* default bg color */
+body {
+  background: #f9fafb;
+  /* background: red; */
+}

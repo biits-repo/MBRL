@@ -2,20 +2,24 @@
 
 import Header from '../../components/Header'
 import Sidebar from '../../components/Sidebar'
-import { useState } from 'react'
 import React from 'react'
 
-const layout = ({children}) => {
-  const [openSidebar, setOpenSidebar] = useState(true);
-
+const layout = ({ children }) => {
   return (
-    <>
-        {/* <Header /> */}
-        <Sidebar isOpen={openSidebar} onClose={() => setOpenSidebar(false)} />
-        <main className="p-4">
-            {children}
+    <div className="flex h-screen overflow-hidden">
+      <div className="m-2">
+        <Sidebar />
+      </div>
+      <div className="flex flex-col flex-1">
+        <div className="m-2">
+          <Header />
+        </div>
+        <main className="flex-1 overflow-auto p-4">
+          {children}
         </main>
-    </>
+      </div>
+    </div>
+
   )
 }
 
