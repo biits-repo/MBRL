@@ -1,41 +1,41 @@
+'use client'
+
 import React from "react";
-import { FaBell, FaCog, FaChevronDown } from "react-icons/fa";
+import { FiSearch, FiUser, FiSettings, FiBell } from "react-icons/fi";
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-gray-900 shadow-md rounded-xl">
-      
-      <div className="text-lg font-semibold text-gray-800 dark:text-gray-100">
-        Welcome, JohnDoe
-      </div>
-
-      <div className="flex items-center gap-4">
-        <div className="relative">
-          <button className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
-            Options
-            <FaChevronDown className="text-xs" />
-          </button>
+    <header className="bg-gray-50 space-y-6 font-sans">
+      <nav className="flex items-center justify-between">
+        <div className="text-gray-400 font-semibold select-none">
+          Good Morning, Ahmed
         </div>
 
-        <input
-          type="text"
-          placeholder="Search..."
-          className="px-3 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
-        />
+        <div className="flex items-center space-x-6 text-gray-400">
+          <div className="relative">
+            <FiSearch className="absolute top-1/2 left-3 -translate-y-1/2 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Type here..."
+              className="pl-10 pr-4 py-1.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm w-56 bg-white"
+            />
+          </div>
 
-        <button className="px-4 py-1 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
-          Sign In
-        </button>
+          <button className="flex items-center space-x-1 text-sm hover:text-orange-500 transition-colors">
+            <FiUser className="text-lg" />
+            <span>Sign In</span>
+          </button>
 
-        <button className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
-          <FaCog size={18} />
-        </button>
+          <button className="hover:text-orange-500 transition-colors">
+            <FiSettings className="text-lg" />
+          </button>
 
-        <button className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white relative">
-          <FaBell size={18} />
-          <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-        </button>
-      </div>
+          <button className="relative hover:text-orange-500 transition-colors">
+            <FiBell className="text-lg" />
+            <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-orange-500" />
+          </button>
+        </div>
+      </nav>
     </header>
   );
 };
