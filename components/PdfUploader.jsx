@@ -11,7 +11,8 @@ const PdfUploader = ({
     error,
     className = "",
     uploadingFile,
-    setUploadingFile
+    setUploadingFile,
+    setPublishedCount
 }) => {
     const [dragOver, setDragOver] = useState(false);
     const inputRef = useRef(null);
@@ -30,13 +31,22 @@ const PdfUploader = ({
     };
 
     const handleDrop = (e) => {
+
+
+
         e.preventDefault();
         setDragOver(false);
         if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
     };
 
     const clear = (e) => {
-        e.stopPropagation();
+
+        if (e) {
+            e.stopPropagation();
+        }
+
+        console.log("file", file)
+
         setFile(null);
         inputRef.current.value = '';
         onChange?.({ target: { files: [] } });
@@ -69,6 +79,7 @@ const PdfUploader = ({
                         onRemove={clear}
                         uploadingFile={uploadingFile}
                         setUploadingFile={setUploadingFile}
+                        setPublishedCount={setPublishedCount}
                     />
                 ) : (
                     <>

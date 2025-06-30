@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 
-export const showInfoAlert = (message = 'Here is some useful information.') => {
+export const showInfoAlert = (message = message || 'Here is some useful information.') => {
   Swal.fire({
     html: `
       <div class="p-6 text-center">

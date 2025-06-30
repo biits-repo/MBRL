@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 
-export const showErrorAlert = (message = 'Something went wrong.') => {
+export const showErrorAlert = (message = message || 'Something went wrong.') => {
   Swal.fire({
     html: `
       <div class="p-6 text-center">

@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 
-export const showSuccessAlert = (message = 'Operation completed successfully.') => {
+export const showSuccessAlert = (message = message || 'Operation completed successfully.') => {
   Swal.fire({
     html: `
       <div class="p-6 text-center">

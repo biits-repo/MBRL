@@ -12,15 +12,23 @@ import CheckboxField from '@/components/CheckboxField';
 import ImageUploader from '@/components/ImageUploader';
 import PdfUploader from '@/components/PdfUploader';
 import axios from 'axios';
+import { showInfoAlert } from '@/components/infoAlert';
+import { showWarningAlert } from '@/components/warningAlert';
 
 const page = () => {
 
   const [file, setFile] = useState(null);
   const [uploadingFile, setUploadingFile] = useState(false);
   const [showPublishedFile, setShowPublishedFile] = useState(false);
+  const [publishedCount, setPublishedCount] = useState(0);
 
 
   const handleShowPublishedFile = () => {
+    if (publishedCount === 0) { 
+      showWarningAlert('No published books yet.');
+      return; 
+    };
+
     setShowPublishedFile(!showPublishedFile);
   };
 
@@ -31,7 +39,7 @@ const page = () => {
     try {
       const response = await axios.post(
         url,
-        { isbn_number: 9877899981 },
+        { isbn_number: '9877899981' },
         { responseType: 'blob' }
       );
 
@@ -53,7 +61,7 @@ const page = () => {
       const response = await axios.post(
         url,
         { isbn_number: '9877899981' },
-        { responseType: 'blob' } 
+        { responseType: 'blob' }
       );
 
       const blob = new Blob([response.data], { type: 'audio/mpeg' });
@@ -118,14 +126,16 @@ const page = () => {
       </section>
 
       <section className="bg-white rounded-xl shadow p-4 flex justify-between py-8 mb-5 mx-auto">
-        <button className="bg-slate-800 text-white rounded px-4 py-1 font-semibold">0 Processing</button>
+        <button className="bg-slate-800 text-white rounded px-4 py-1 font-semibold">
+          {uploadingFile ? '1 Processing...' : '0 Processing'}
+        </button>
         <div className="flex gap-3 items-center">
-          <button className="bg-slate-800 text-white rounded px-4 py-1 font-semibold">2 Drafts</button>
+          <button className="bg-slate-800 text-white rounded px-4 py-1 font-semibold">0 Drafts</button>
           <button
             onClick={handleShowPublishedFile}
-            className="bg-green-600 text-white rounded px-4 py-1 font-semibold"
+            className="bg-green-600 text-white rounded px-4 py-1 font-semibold cursor-pointer"
           >
-            50 Published
+            {publishedCount} Published
           </button>
         </div>
       </section>
@@ -141,6 +151,7 @@ const page = () => {
             setFile={setFile}
             uploadingFile={uploadingFile}
             setUploadingFile={setUploadingFile}
+            setPublishedCount={setPublishedCount}
           />
         </div>
 

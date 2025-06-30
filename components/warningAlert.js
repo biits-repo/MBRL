@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 
-export const showWarningAlert = (message = 'Please be cautious.') => {
+export const showWarningAlert = (message = message || 'Please be cautious.') => {
   Swal.fire({
     html: `
       <div class="p-6 text-center">
